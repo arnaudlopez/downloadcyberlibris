@@ -11,6 +11,9 @@ var events = require('events');
 var test=0;
 
 //var idbook = process.argv[2];
+// https://stackoverflow.com/questions/26874444/limit-number-of-parallel-http-requests-in-node-js
+// https://stackoverflow.com/questions/12060869/why-is-node-js-only-processing-six-requests-at-a-time
+// https://www.quora.com/How-can-I-convert-SWF-files-to-PDF
 
 idbk();
 
@@ -78,7 +81,7 @@ var nbpage;
             xml += chunk;
         });
 
-        res.on('end', function() {
+        res.on('end', function(e) {
             var xmltmp1 = (xml.split('src="'));
             var xmltmp2 = xmltmp1.slice(1);
             for(var i = 0; i < xmltmp2.length;i++){ 
@@ -96,6 +99,7 @@ var nbpage;
                 console.log(links[i]);
                 nextlinks(nbpage,swfname,pngname,path, pathpng, idbook, links,i, callback )
             }
+        if (e) throw e ;
         });
     });
     
@@ -137,7 +141,6 @@ function nextlinks(nbpage,swfname,pngname,path, pathpng, idbook,links,i,callback
             } 
             swftool(swfname,pngname,pathpng);
             });
-            
         });
     });
     
