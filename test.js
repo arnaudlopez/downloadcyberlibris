@@ -14,6 +14,7 @@ var test=0;
 // https://stackoverflow.com/questions/26874444/limit-number-of-parallel-http-requests-in-node-js
 // https://stackoverflow.com/questions/12060869/why-is-node-js-only-processing-six-requests-at-a-time
 // https://www.quora.com/How-can-I-convert-SWF-files-to-PDF
+// git  infos : https://rogerdudler.github.io/git-guide/index.fr.html
 
 idbk();
 
